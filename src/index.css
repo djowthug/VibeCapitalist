@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#18181b] text-[#e4e4e7] overflow-x-hidden font-sans;
+  }
+}
+
+/* Retro Sunburst Background Effect */
+.retro-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle, #27272a 0%, #09090b 80%);
+  overflow: hidden;
+}
+
+.sunburst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200vmax;
+  height: 200vmax;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.03) 0deg 10deg,
+    transparent 10deg 20deg
+  );
+  animation: rotate 120s linear infinite;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Money Float Animation */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.1) rotate(var(--tw-rotate));
+  }
+  100% {
+    transform: translateY(-80px) scale(1) rotate(var(--tw-rotate));
+    opacity: 0;
+  }
+}
+
+.animate-float-money {
+  animation: floatUp 0.8s ease-out forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b; 
+}
+::-webkit-scrollbar-thumb {
+  background: #3f3f46; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #52525b; 
+}
